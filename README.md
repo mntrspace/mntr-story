@@ -1,14 +1,15 @@
 # mntr-story
 
-Personal portfolio for **Mantra Manan Saraswat** — a public showcase of bio, experience, and work. Built with Next.js.
+Personal portfolio for **Mantra Manan Saraswat** — a public showcase of bio, experience, and work.
+Live at **https://mntr-storyspace.vercel.app**.
 
-> **Content source of truth:** [`lib/content.ts`](./lib/content.ts). Edit that file to update the site — the components are pure presentation.
+> **Content source of truth:** the typed data in [`lib/`](./lib) (`content.ts`, `journey.ts`,
+> `quotes.ts`, `logos.ts`). Edit those — the components are pure presentation.
 
 ## Stack
 
-- **Next.js 16** (App Router) · **React 19** · **TypeScript**
-- **Tailwind CSS v4**
-- Static, all Server Components (no client-side JS)
+- **Next.js 16** (App Router) · **React 19** · **TypeScript** · **Tailwind CSS v4**
+- Mostly static Server Components + a few small client islands (header, timeline, audio, scroll-snap)
 - Deploys on **Vercel**
 
 ## Develop
@@ -19,56 +20,64 @@ npm run dev      # http://localhost:3000
 npm run build    # production build
 npm start        # serve the production build
 npm run lint     # eslint
+npm run check    # sensitivity scan (also runs automatically on commit/push)
 ```
+
+## Routes
+
+- `/` — home: hero, about, achievements, experience, skills, projects, showcase, education, volunteer
+- `/journey` — horizontal-scroll life/career timeline + how-to-say-my-name
+- `/quote-off` — quotes I keep coming back to (two-panel scroll-snap)
+- `/interesting` — Quote Off + Goodreads (two-panel scroll-snap)
 
 ## Structure
 
 ```
 app/
-  layout.tsx            root layout — Geist fonts + metadata
-  page.tsx              composes the section components
-  globals.css           theme tokens + base styles
-  icon.png              favicon (auto-wired by Next.js)
-  apple-icon.png        apple touch icon
-  opengraph-image.png   social share preview
-components/              one component per section (hero, about, experience, …)
+  layout.tsx              root layout — Geist + Caveat fonts, metadata
+  page.tsx                home (composes the section components)
+  journey/page.tsx        /journey
+  quote-off/page.tsx      /quote-off
+  interesting/page.tsx    /interesting
+  globals.css             theme tokens + base styles
+  icon.png / apple-icon.png / opengraph-image.png
+components/                section + UI components (hero, experience, showcase,
+                           site-header, journey-timeline, pronounce, social-links, …)
 lib/
-  content.ts            ← ALL site content lives here (typed data)
+  content.ts              ← most site content (profile, experience, skills, showcase, résumé, …)
+  journey.ts              /journey milestones
+  quotes.ts               /quote-off quotes
+  logos.ts                org/school → logo path
 public/
-  avatar.png            hero portrait
-  portrait.png          about-section portrait
-  horizon.png           closing "horizon" quote banner
+  logos/                  org + school logos
+  avatar.png / about.jpg / horizon.png
+  mantra-pronunciation.m4a
+  Mantra-Manan-Saraswat-Resume.pdf
+scripts/check-sensitive.mjs   sensitivity scanner (git hooks live in .githooks/)
 ```
 
 ## Editing content
 
-Everything you'd want to change — bio, tagline, experience, skills, projects,
-education, links — is typed data in `lib/content.ts`. Update the data and the
-site reflects it. Design lives entirely in `components/` and `app/globals.css`,
-so you can redesign freely without touching content.
-
-## Images
-
-- `app/icon.png` → browser-tab favicon (Next.js generates the `<link>` tags from it)
-- `public/*.png` → page imagery, rendered via `next/image`
+Everything you'd change — bio, experience (incl. the per-role detail bullets), skills, projects,
+showcase, education, the journey, the quotes, the résumé date — is typed data in `lib/`. Update the
+data and the site reflects it. Design lives in `components/` + `app/globals.css`, so you can redesign
+freely without touching content.
 
 ## Deploy
 
-**Live:** https://mntr-storyspace.vercel.app — Vercel project `mntr-storyspace`,
-GitHub push-to-deploy connected, so every push to `main` auto-deploys. Update
-`metadataBase` in `app/layout.tsx` if the domain changes (e.g. a custom `mntr.space`).
+**Live:** https://mntr-storyspace.vercel.app — Vercel project `mntr-storyspace`, push-to-deploy on
+`main`. Update `metadataBase` in `app/layout.tsx` for a custom domain (e.g. `mntr.space`).
 
 ## Publishing safety
 
-This is a public repo, so a sensitivity scanner runs automatically before every
-commit and push (git hooks in `.githooks/`, installed by `npm install`).
+A sensitivity scanner runs before every commit/push (git hooks in `.githooks/`, installed by
+`npm install`):
 
 - Blocks **secrets** (keys, tokens, `.env`, service-account JSON) outright.
-- Blocks **private content** (salary/comp terms, vault paths, credential
-  filenames) unless you explicitly override with `ALLOW_SENSITIVE=1 git push`.
-- Run it manually anytime: `npm run check`.
-- Tune patterns in `scripts/check-sensitive.mjs`; whitelist a line with a
-  `sensitivity-ok` comment.
+- Blocks **private content** (salary/comp terms, vault paths, credential filenames) unless you
+  override with `ALLOW_SENSITIVE=1 git push`.
+- Run manually anytime: `npm run check`. Patterns in `scripts/check-sensitive.mjs`; whitelist a line
+  with a `sensitivity-ok` comment.
 
-Defense-in-depth on top of the content model (only `lib/content.ts` is published;
-nothing auto-syncs from the private vault).
+Defense-in-depth on top of the content model (only `lib/*` is published; nothing auto-syncs from the
+private vault).
