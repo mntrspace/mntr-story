@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "node scripts/check-sensitive.mjs --all",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "next": "16.2.9",

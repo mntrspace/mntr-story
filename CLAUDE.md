@@ -19,6 +19,24 @@ This repo is **PUBLIC**. Only public-facing bio/portfolio content belongs here.
 salary negotiations, finances, daily journals, internal/work docs, credentials,
 client names under NDA. When in doubt, leave it out.
 
+## Publishing safety — sensitivity scan (enforced)
+
+A scanner guards every commit and push so nothing sensitive ships by accident.
+
+- **Run anytime:** `npm run check` (scans all tracked files).
+- **Automatic:** git hooks (`.githooks/pre-commit`, `.githooks/pre-push`) run it for
+  you. They install via `npm install` (the `prepare` script sets `core.hooksPath`).
+  A flagged commit/push **aborts**.
+- **Secrets** (keys, tokens, service-account JSON, `.env`) → always hard-blocked.
+- **Private content** (salary/ESOP/cap-table/₹ terms, vault paths, credential
+  filenames) → blocked, with an easy override: `ALLOW_SENSITIVE=1 git push`.
+- **Claude (you): never bypass this on your own.** If a commit/push is blocked,
+  STOP and show the user the exact finding. Only use `ALLOW_SENSITIVE=1` or
+  `--no-verify` when the user *explicitly* tells you to — the override is THEIR
+  permission, never yours.
+- Patterns live in `scripts/check-sensitive.mjs`; mark a false positive with a
+  `sensitivity-ok` comment on that line.
+
 ## Content
 
 - **Source of truth for the _information_:** the **Obsidian vault**

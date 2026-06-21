@@ -1,0 +1,6 @@
+#!/bin/sh
+# Final sensitivity gate before publishing to the PUBLIC remote.
+# Personal-content override:  ALLOW_SENSITIVE=1 git push ...
+# Deliberate full bypass:     git push --no-verify
+ROOT="$(git rev-parse --show-toplevel)"
+exec node "$ROOT/scripts/check-sensitive.mjs" --all

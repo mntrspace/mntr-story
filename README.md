@@ -57,3 +57,18 @@ so you can redesign freely without touching content.
 Push to `main`, import the repo on [Vercel](https://vercel.com/new), and it
 auto-deploys on every push. Update `metadataBase` in `app/layout.tsx` to the
 final domain (e.g. `https://mntr.space`) so OG/social tags resolve correctly.
+
+## Publishing safety
+
+This is a public repo, so a sensitivity scanner runs automatically before every
+commit and push (git hooks in `.githooks/`, installed by `npm install`).
+
+- Blocks **secrets** (keys, tokens, `.env`, service-account JSON) outright.
+- Blocks **private content** (salary/comp terms, vault paths, credential
+  filenames) unless you explicitly override with `ALLOW_SENSITIVE=1 git push`.
+- Run it manually anytime: `npm run check`.
+- Tune patterns in `scripts/check-sensitive.mjs`; whitelist a line with a
+  `sensitivity-ok` comment.
+
+Defense-in-depth on top of the content model (only `lib/content.ts` is published;
+nothing auto-syncs from the private vault).

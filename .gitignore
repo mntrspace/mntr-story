@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# secrets / credentials (never commit to a public repo)
+*.key
+*.p12
+*.pfx
+*service-account*.json
+*credentials*.json
+id_rsa
+id_ed25519
