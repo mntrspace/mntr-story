@@ -69,3 +69,28 @@ body {
 .story[open] .lbl-closed {
   display: none;
 }
+
+/* Quote Off two-panel scroll-snap — scoped to the page via <SnapScroll>. */
+html.qsnap {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 0;
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+.bounce {
+  display: inline-block;
+  animation: nudge 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bounce {
+    animation: none;
+  }
+}

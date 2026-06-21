@@ -11,8 +11,8 @@ function dayOfYear() {
 }
 
 export function QuoteOfDay() {
-  // Start at 0 for a stable server/first-client render (no hydration mismatch),
-  // then settle on today's quote after mount.
+  // Stable index for the server / first client render (avoids hydration
+  // mismatch), then settle on today's quote after mount.
   const [i, setI] = useState(0);
 
   useEffect(() => {
@@ -20,10 +20,10 @@ export function QuoteOfDay() {
   }, []);
 
   return (
-    <section className="rounded-2xl border border-border bg-card p-8 sm:p-10">
-      <div className="flex items-center justify-between gap-4">
+    <div className="text-center">
+      <div className="flex items-center justify-center gap-3">
         <p className="mono text-xs uppercase tracking-widest text-accent">
-          Inspiration of the day
+          Inspiration for today
         </p>
         <button
           type="button"
@@ -33,9 +33,9 @@ export function QuoteOfDay() {
           another ↻
         </button>
       </div>
-      <div className="mt-6">
+      <div className="mt-8">
         <QuoteBlock entry={quoteOff[i]} variant="spotlight" />
       </div>
-    </section>
+    </div>
   );
 }
