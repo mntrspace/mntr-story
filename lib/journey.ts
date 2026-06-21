@@ -5,6 +5,8 @@
 //   - birth/education notes are EMPTY placeholders for Mantra to write.
 // Achievement `date`s are INFERRED from role periods — correct as needed.
 
+import { bitsProjects, type Project } from "@/lib/content";
+
 export type Milestone = {
   id: string;
   kind: "birth" | "education" | "work";
@@ -18,6 +20,7 @@ export type Milestone = {
   location?: string;
   roles?: { title: string; period: string }[];
   achievements?: { title: string; metric: string; date: string }[];
+  projects?: Project[];
   note?: string;
 };
 
@@ -64,6 +67,7 @@ export const journey: Milestone[] = [
       { title: "BITSAT", metric: "331 / 450", date: "2016" },
       { title: "JEE Advanced", metric: "Rank 7,853", date: "2016" },
     ],
+    projects: bitsProjects,
     note: "",
   },
   {

@@ -18,7 +18,7 @@ export type Experience = {
 };
 export type SkillGroup = { category: string; items: string[] };
 export type Project = { name: string; period: string; description: string; href: string | null };
-export type Education = { school: string; period: string; detail: string };
+export type Education = { school: string; period: string; detail: string; projects?: Project[] };
 export type Volunteer = { org: string; period: string };
 export type ExternalLink = { label: string; description: string; href: string; external?: boolean };
 
@@ -49,7 +49,6 @@ export const socials: Social[] = [
   { label: "Instagram", href: "https://www.instagram.com/themantramanan/", handle: "@themantramanan" },
   { label: "YouTube", href: "https://www.youtube.com/@mntr_space", handle: "@mntr_space" },
   { label: "Behance", href: "https://www.behance.net/mntr_space", handle: "mntr_space" },
-  { label: "Book a call", href: "https://calendar.app.google/Dp7zrsoyp29fAvJCA", handle: "Calendar" },
 ];
 
 export const achievements: Achievement[] = [
@@ -173,6 +172,11 @@ export const projects: Project[] = [
     description: "Converted Rayla village into a cashless economy — door-to-door surveys and bilingual documentation to drive digital-payments adoption.",
     href: "https://www.youtube.com/watch?v=LoQyMiSIfIA",
   },
+];
+
+// The 3 BITS engineering / coursework projects — shown under BITS education
+// (homepage Education card + the journey BITS milestone).
+export const bitsProjects: Project[] = [
   {
     name: "Tunnel Modelling for Subsidence",
     period: "Aug 2019 — May 2020",
@@ -198,6 +202,7 @@ export const education: Education[] = [
     school: "Birla Institute of Technology & Science, Pilani",
     period: "2016 — 2021",
     detail: "B.E. Civil Engineering · M.Sc. Physics (Honours)",
+    projects: bitsProjects,
   },
   {
     school: "Institute of Actuaries of India",

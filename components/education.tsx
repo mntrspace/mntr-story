@@ -17,6 +17,24 @@ export function Education() {
               <span className="mono text-sm text-muted">{e.period}</span>
             </div>
             <p className="mt-2 text-sm text-muted">{e.detail}</p>
+            {e.projects ? (
+              <div className="mt-4">
+                <h4 className="mono text-[0.7rem] uppercase tracking-widest text-muted">
+                  Academic projects
+                </h4>
+                <ul className="mt-2 space-y-2">
+                  {e.projects.map((p) => (
+                    <li key={p.name}>
+                      <div className="flex flex-wrap items-baseline justify-between gap-x-2">
+                        <span className="text-sm font-medium">{p.name}</span>
+                        <span className="mono text-xs text-muted">{p.period}</span>
+                      </div>
+                      <p className="text-xs text-muted">{p.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>

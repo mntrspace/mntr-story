@@ -1,4 +1,4 @@
-import { Nav } from "@/components/nav";
+import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
 import { Achievements } from "@/components/achievements";
@@ -7,13 +7,12 @@ import { Skills } from "@/components/skills";
 import { Projects } from "@/components/projects";
 import { Education } from "@/components/education";
 import { Volunteer } from "@/components/volunteer";
-import { Interesting } from "@/components/interesting";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
     <>
-      <Nav />
+      <SiteHeader />
       <main className="flex-1">
         <Hero />
         <About />
@@ -23,7 +22,6 @@ export default function Home() {
         <Projects />
         <Education />
         <Volunteer />
-        <Interesting />
       </main>
       <Footer />
     </>

@@ -88,6 +88,22 @@ export function JourneyCard({ m }: { m: Milestone }) {
         </div>
       ) : null}
 
+      {m.projects ? (
+        <div className="mt-4">
+          <h4 className="mono text-[0.7rem] uppercase tracking-widest text-muted">
+            Academic projects
+          </h4>
+          <ul className="mt-2 space-y-1.5">
+            {m.projects.map((p) => (
+              <li key={p.name} className="text-sm">
+                <span className="font-medium">{p.name}</span>
+                <span className="mono ml-2 text-xs text-muted">{p.period}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
       {m.note ? (
         <details className="story mt-4">
           <summary className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted transition-colors hover:border-accent hover:text-accent">
