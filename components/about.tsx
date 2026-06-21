@@ -34,11 +34,11 @@ export function About() {
         </div>
 
         <Image
-          src="/portrait.png"
-          alt="Portrait illustration of Mantr"
-          width={220}
-          height={317}
-          className="hidden rounded-xl border border-border sm:block"
+          src="/about.jpg"
+          alt="Mantra Manan Saraswat"
+          width={675}
+          height={900}
+          className="hidden h-auto w-56 rounded-xl border border-border sm:block"
         />
       </div>
     </Section>
