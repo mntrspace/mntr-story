@@ -7,4 +7,5 @@ export const logos: Record<string, string> = {
   "Vinayak Buildtech": "/logos/vinayak.png",
   "Birla Institute of Technology & Science, Pilani": "/logos/bits.png",
   "St. Anne's Senior Secondary School, Jodhpur": "/logos/stannes.png",
+  "Institute of Actuaries of India": "/logos/iai.png",
 };
