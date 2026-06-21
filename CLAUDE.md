@@ -21,12 +21,17 @@ client names under NDA. When in doubt, leave it out.
 
 ## Content
 
-- **Source of truth:** `lib/content.ts` — all text lives here as typed data.
-  To update the site, edit this file. Components are pure presentation.
-- **Canonical bio:** the public Notion page
-  (`mntr-space.notion.site/Mantra-Manan-Saraswat`) and the private vault.
-  This repo holds a curated, hand-picked subset — content is **not** auto-synced
-  from the vault (deliberate, to avoid leaking private notes).
+- **Source of truth for the _information_:** the **Obsidian vault**
+  (`~/Documents/GitHub/mntr-obsidian-space`, private) is the canonical home for
+  Mantra's bio, career, and project facts. The public Notion page
+  (`mntr-space.notion.site/Mantra-Manan-Saraswat`) mirrors much of the same.
+- **Source of truth for what the _site renders_:** `lib/content.ts` — a
+  hand-curated, public-safe **projection** of the vault. All on-page text lives
+  here as typed data; components are pure presentation.
+- **Flow:** vault (private, everything) → cherry-pick the public-safe subset →
+  `lib/content.ts` (public) → site. Content is **not** auto-synced from the
+  vault — it's deliberately manual so private notes can never leak. To update
+  the site, edit `lib/content.ts`, pulling fresh facts from the vault as needed.
 
 ## Architecture
 
@@ -60,5 +65,7 @@ to the final domain.
 
 ## Relationship to the vault
 
-`~/Documents/GitHub/mntr-obsidian-space` = private knowledge base (Life OS).
-**This** repo = the public showcase. Separate by design.
+`~/Documents/GitHub/mntr-obsidian-space` = private knowledge base (Life OS) and
+the **upstream source of truth** for the bio/career information surfaced here.
+**This** repo = the public showcase, holding only the curated public projection
+of that information. Separate by design — the vault is never auto-synced.
