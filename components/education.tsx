@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { education, academicAchievements } from "@/lib/content";
+import { OrgLogo } from "@/components/org-logo";
 
 export function Education() {
   return (
@@ -10,6 +11,7 @@ export function Education() {
             key={e.school}
             className="rounded-xl border border-border bg-card p-6"
           >
+            <OrgLogo name={e.school} className="mb-3" />
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="font-semibold">{e.school}</h3>
               <span className="mono text-sm text-muted">{e.period}</span>

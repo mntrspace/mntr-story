@@ -1,5 +1,6 @@
 import { Section } from "@/components/section";
 import { experiences } from "@/lib/content";
+import { OrgLogo } from "@/components/org-logo";
 
 export function Experience() {
   return (
@@ -10,6 +11,7 @@ export function Experience() {
             key={`${e.company}-${i}`}
             className="rounded-xl border border-border bg-card p-6"
           >
+            <OrgLogo name={e.company} className="mb-4" />
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="text-lg font-semibold">
                 {e.role}
