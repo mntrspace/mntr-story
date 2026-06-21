@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mntr.space"),
+  metadataBase: new URL("https://mntr-storyspace.vercel.app"),
   title: "Mantra Manan Saraswat — Product, Strategy & Growth",
   description:
     "Perpetually Work-in-Progress. Product Manager building agentic AI for US healthcare at 100ms — 5 years across product, growth, sales and strategy.",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     title: "Mantra Manan Saraswat",
     description:
       "Product, Strategy & Growth · AI, B2B · Building agentic AI for US healthcare at 100ms.",
-    url: "https://mntr.space",
-    siteName: "mntr.space",
+    url: "https://mntr-storyspace.vercel.app",
+    siteName: "mntr-storyspace",
     type: "website",
   },
   twitter: {

@@ -1,4 +1,5 @@
 import { socials } from "@/lib/content";
+import { SocialLinks } from "@/components/social-links";
 
 export function Footer() {
   return (
@@ -7,19 +8,7 @@ export function Footer() {
         <p className="text-sm text-muted">
           © 2026 Mantra Manan Saraswat · Perpetually Work-in-Progress
         </p>
-        <div className="flex flex-wrap gap-x-4 gap-y-1">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-muted transition-colors hover:text-accent"
-            >
-              {s.label}
-            </a>
-          ))}
-        </div>
+        <SocialLinks socials={socials} />
       </div>
     </footer>
   );
