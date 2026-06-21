@@ -35,3 +35,37 @@ body {
 .mono {
   font-family: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
 }
+
+/* Serif — editorial voice for quotes. */
+.serif {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+
+/* Handwriting — for the personal "in my voice" notes. */
+.hand {
+  font-family: var(--font-hand), "Segoe Script", "Bradley Hand", cursive;
+}
+
+/* "the story" disclosure, built on native <details>. */
+.story summary {
+  list-style: none;
+}
+.story summary::-webkit-details-marker {
+  display: none;
+}
+.story .chev {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.story[open] .chev {
+  transform: rotate(90deg);
+}
+.story .lbl-open {
+  display: none;
+}
+.story[open] .lbl-open {
+  display: inline;
+}
+.story[open] .lbl-closed {
+  display: none;
+}
