@@ -11,6 +11,7 @@ export type Role = { title: string; period: string; highlights: string[] };
 export type Experience = {
   company: string;
   companyUrl: string | null;
+  blurb: string;
   location: string;
   roles: Role[];
   reflection: string;
@@ -72,6 +73,12 @@ export const socials: Social[] = [
   { label: "Behance", href: "https://www.behance.net/mntr_space", handle: "mntr_space" },
 ];
 
+export const resume = {
+  href: "/Mantra-Manan-Saraswat-Resume.pdf",
+  filename: "Mantra Manan Saraswat - Resume (Mar 2025).pdf",
+  updated: "March 2025",
+};
+
 export const achievements: Achievement[] = [
   {
     metric: "4 pilots",
@@ -97,6 +104,7 @@ export const experiences: Experience[] = [
   {
     company: "100ms",
     companyUrl: "https://www.100ms.ai/",
+    blurb: "Building agentic AI for US healthcare.",
     location: "Abu Dhabi · San Francisco · Bengaluru",
     roles: [
       {
@@ -132,6 +140,7 @@ export const experiences: Experience[] = [
   {
     company: "Zwende",
     companyUrl: "https://www.zwende.com/",
+    blurb: "Online managed marketplace for customizable lifestyle products and art & craft workshops.",
     location: "Bengaluru · Remote",
     roles: [
       {
@@ -164,6 +173,7 @@ export const experiences: Experience[] = [
   {
     company: "Vinayak Buildtech",
     companyUrl: null,
+    blurb: "Real-estate developer based out of Udaipur.",
     location: "Udaipur, India",
     roles: [
       {
@@ -183,6 +193,7 @@ export const experiences: Experience[] = [
   {
     company: "Mapped",
     companyUrl: null,
+    blurb: "Advertising & marketing startup with its own production arm.",
     location: "Remote",
     roles: [
       {

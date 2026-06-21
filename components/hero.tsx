@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { profile, socials } from "@/lib/content";
+import { profile, socials, resume } from "@/lib/content";
 import { SocialLinks } from "@/components/social-links";
 import { Pronounce } from "@/components/pronounce";
 
@@ -28,14 +28,24 @@ export function Hero() {
           <div className="mt-5">
             <SocialLinks socials={socials} />
           </div>
-          <div className="mt-5">
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <Link
               href="/journey"
               className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               See my journey →
             </Link>
+            <a
+              href={resume.href}
+              download={resume.filename}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              ↓ Download résumé
+            </a>
           </div>
+          <p className="mono mt-2 text-xs text-muted">
+            Résumé updated {resume.updated}
+          </p>
         </div>
       </div>
     </section>
