@@ -1,93 +1,78 @@
 import { Section } from "@/components/section";
-import { experiences, type Experience } from "@/lib/content";
+import { experiences } from "@/lib/content";
 import { OrgLogo } from "@/components/org-logo";
-
-type Group = {
-  company: string;
-  companyUrl: string | null;
-  location: string;
-  note: string;
-  quote: Experience["quote"];
-  roles: { role: string; period: string }[];
-};
-
-// Collapse the flat role list into one entry per company (newest role first),
-// keeping a representative note + the quote any role carries.
-function groupByCompany(items: Experience[]): Group[] {
-  const groups: Group[] = [];
-  for (const e of items) {
-    let g = groups.find((x) => x.company === e.company);
-    if (!g) {
-      g = {
-        company: e.company,
-        companyUrl: e.companyUrl,
-        location: e.location,
-        note: e.note,
-        quote: e.quote,
-        roles: [],
-      };
-      groups.push(g);
-    }
-    g.roles.push({ role: e.role, period: e.period });
-    if (!g.quote && e.quote) g.quote = e.quote;
-  }
-  return groups;
-}
+import { Meta } from "@/components/meta";
+import { FiMapPin, FiCalendar } from "react-icons/fi";
 
 export function Experience() {
-  const groups = groupByCompany(experiences);
-
   return (
     <Section id="experience" eyebrow="Career" title="Experience">
       <div className="space-y-6">
-        {groups.map((g) => (
+        {experiences.map((e) => (
           <div
-            key={g.company}
+            key={e.company}
             className="rounded-xl border border-border bg-card p-6"
           >
-            <OrgLogo name={g.company} className="mb-4" />
+            <OrgLogo name={e.company} className="mb-4" />
 
             <div className="flex flex-wrap items-baseline justify-between gap-x-2">
               <h3 className="text-lg font-semibold">
-                {g.companyUrl ? (
+                {e.companyUrl ? (
                   <a
-                    href={g.companyUrl}
+                    href={e.companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent hover:underline"
                   >
-                    {g.company}
+                    {e.company}
                   </a>
                 ) : (
-                  <span className="text-accent">{g.company}</span>
+                  <span className="text-accent">{e.company}</span>
                 )}
               </h3>
-              {g.roles.length > 1 ? (
+              {e.roles.length > 1 ? (
                 <span className="mono text-xs text-accent">↑ promoted</span>
               ) : null}
             </div>
+            <div className="mt-1">
+              <Meta icon={FiMapPin}>{e.location}</Meta>
+            </div>
 
-            <p className="mono mt-1 text-xs text-muted">{g.location}</p>
-
-            <div className="mt-3 space-y-1">
-              {g.roles.map((r, i) => (
-                <div
-                  key={i}
-                  className="flex flex-wrap items-baseline justify-between gap-x-2 text-sm"
-                >
-                  <span className="font-medium">{r.role}</span>
-                  <span className="mono text-xs text-muted">{r.period}</span>
+            <div className="mt-4 space-y-4">
+              {e.roles.map((r, i) => (
+                <div key={i}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-2">
+                    <span className="text-sm font-medium">{r.title}</span>
+                    <Meta icon={FiCalendar}>{r.period}</Meta>
+                  </div>
+                  {r.highlights.length ? (
+                    <details className="story mt-2">
+                      <summary className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted transition-colors hover:border-accent hover:text-accent">
+                        <span className="chev text-accent">›</span>
+                        <span className="lbl-closed">details</span>
+                        <span className="lbl-open">hide</span>
+                      </summary>
+                      <ul className="mt-3 space-y-2 border-l border-border pl-4">
+                        {r.highlights.map((h, j) => (
+                          <li key={j} className="flex gap-2 text-sm text-muted">
+                            <span className="text-accent">·</span>
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : null}
                 </div>
               ))}
             </div>
 
-            <p className="mt-3 text-muted">{g.note}</p>
+            <p className="mt-4 text-muted">{e.reflection}</p>
 
-            {g.quote ? (
+            {e.quote ? (
               <blockquote className="mt-4 border-l-2 border-accent pl-4 text-sm italic text-muted">
-                &ldquo;{g.quote.text}&rdquo;
-                {g.quote.author ? (
-                  <span className="mono ml-1 not-italic"> — {g.quote.author}</span>
+                &ldquo;{e.quote.text}&rdquo;
+                {e.quote.author ? (
+                  <span className="mono ml-1 not-italic"> — {e.quote.author}</span>
                 ) : null}
               </blockquote>
             ) : null}

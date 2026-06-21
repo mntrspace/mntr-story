@@ -7,20 +7,41 @@
 export type Social = { label: string; href: string; handle: string };
 export type Achievement = { metric: string; title: string; description: string };
 export type Quote = { text: string; author: string | null };
+export type Role = { title: string; period: string; highlights: string[] };
 export type Experience = {
   company: string;
   companyUrl: string | null;
-  role: string;
-  period: string;
   location: string;
-  note: string;
+  roles: Role[];
+  reflection: string;
   quote: Quote | null;
 };
-export type SkillGroup = { category: string; items: string[] };
+export type SkillGroup = {
+  category: string;
+  items: string[];
+  tools?: { group: string; items: string[] }[];
+};
 export type Project = { name: string; period: string; description: string; href: string | null };
-export type Education = { school: string; period: string; detail: string; projects?: Project[] };
-export type Volunteer = { org: string; period: string };
+export type Education = {
+  school: string;
+  period: string;
+  location: string;
+  detail: string;
+  highlights?: string[];
+  projects?: Project[];
+};
+export type Volunteer = {
+  org: string;
+  period: string;
+  role?: string;
+  highlights?: string[];
+};
 export type ExternalLink = { label: string; description: string; href: string; external?: boolean };
+export type ShowcaseGroup = {
+  category: string;
+  icon: string;
+  items: { label: string; href?: string }[];
+};
 
 export const profile = {
   name: "Mantra Manan Saraswat",
@@ -76,55 +97,106 @@ export const experiences: Experience[] = [
   {
     company: "100ms",
     companyUrl: "https://www.100ms.ai/",
-    role: "Product Manager",
-    period: "Apr 2023 — Present",
-    location: "Abu Dhabi, UAE / San Francisco, USA",
-    note: "Building agentic AI for US healthcare — voice agents, customer dashboard, and the product strategy behind them.",
-    quote: null,
-  },
-  {
-    company: "100ms",
-    companyUrl: "https://www.100ms.ai/",
-    role: "Growth Lead",
-    period: "May 2022 — Mar 2023",
-    location: "Bengaluru, IN / Abu Dhabi, UAE",
-    note: "Surrounded by incredibly smart people and endless opportunities to grow and explore the business. It taught me to love what you do, take ownership, and persevere — plus a truly global experience meeting customers, attending events, and living in different countries.",
+    location: "Abu Dhabi · San Francisco · Bengaluru",
+    roles: [
+      {
+        title: "Product Manager",
+        period: "Apr 2023 — Present",
+        highlights: [
+          "Led strategy, execution, marketing, pricing and billing for 15+ features and products across their full lifecycle.",
+          "Call AI: shipped speaker-labelled transcription + AI summaries — 190x usage by month 3, turning it into a growing revenue line.",
+          "US Telehealth: built the strategy + accessibility (Closed Captioning, SIP Calling); took $1.5M of accounts live, with a $5M+ pipeline after the Twilio Video sunset.",
+          "Live streaming: shipped RTMP-In, VOD and Live Transcription — unlocking ~$150M of market potential.",
+          "Collaborative Whiteboard: a top customer ask that converted 70K USD immediately and ~800K down the line.",
+          "Built one of CPaaS's most robust HIPAA implementations (plus GDPR, CCPA) — key to US Telehealth market entry.",
+          "Content owner: launch blogs, product newsletter, use-case + migration guides, feature/server docs, and the self-serve dashboard journey.",
+        ],
+      },
+      {
+        title: "Growth Lead",
+        period: "May 2022 — Mar 2023",
+        highlights: [
+          "Worked directly with the COO on founder-led, cross-functional projects across product, sales, marketing and ops.",
+          "Ran 3 virtual roundtables with C-level panelists — 300+ attendees each.",
+          "Generated a $440K revenue pipeline through roundtables and targeted outbound.",
+          "Expanded the Startup Program to 25+ accelerators & VCs; built a credit-management workflow driving $500K+ revenue from program startups.",
+          "Revamped the website and product positioning for the telehealth and education verticals.",
+          "Revamped & automated investor decks, MIS, billing and startup-program processes.",
+        ],
+      },
+    ],
+    reflection:
+      "At 100ms I was surrounded by incredibly smart people, which gave me endless opportunities to grow and explore the business. It taught me to love what you do, take accountability and ownership, and persevere — plus a truly global experience: meeting fascinating people, engaging with customers, attending events, and living in different countries.",
     quote: { text: "If you're the smartest person in the room, you're in the wrong room.", author: "Confucius" },
   },
   {
     company: "Zwende",
     companyUrl: "https://www.zwende.com/",
-    role: "Product & Growth Analyst",
-    period: "May 2020 — Apr 2022",
-    location: "Bengaluru, IN / Remote",
-    note: "Online managed marketplace for customizable lifestyle products and art & craft workshops. Drove growth and shipped 0-to-1 features during the COVID pivot.",
-    quote: null,
-  },
-  {
-    company: "Zwende",
-    companyUrl: "https://www.zwende.com/",
-    role: "Intern — Business Analyst",
-    period: "May 2019 — Jul 2019",
-    location: "Bengaluru, IN",
-    note: "My first major professional breakthrough — invaluable lessons in discipline and navigating work outside my comfort zone. Where I first learned the art of overcommitting and successfully delivering results.",
+    location: "Bengaluru · Remote",
+    roles: [
+      {
+        title: "Product & Growth Analyst",
+        period: "May 2020 — Apr 2022",
+        highlights: [
+          "Launched & marketed 'Workshop Bundles' (one-click registration) — 40x adoption in 3 months and 5x slots booked.",
+          "Piloted an MVP + platform migration/integration: APIs, reporting, user/event tracking, emails and bug fixes.",
+          "5x MoM revenue growth for paid workshops in 3 months via curation + marketing.",
+          "Grew Instagram engagement 0.53% → 1.89% and gained 120k+ followers in a year.",
+          "Lifted email open rates 9% → 17.8% and doubled CVR via A/B testing of copy/design + persona analysis.",
+          "Evaluated & integrated analytics (Segment, Customer IO, GA4…); built 7 dashboards, 14 videos, 24 grids and 10+ campaigns.",
+          "Wrote scripts to scrape 60k+ data points for persona analysis, ad targeting and lead generation.",
+        ],
+      },
+      {
+        title: "Intern — Business Analyst",
+        period: "May 2019 — Jul 2019",
+        highlights: [
+          "Built Python web-scraping scripts that generated 10,000+ leads.",
+          "Developed a LinkedIn lead-gen flow reaching 2,500+ users.",
+          "Directed & edited 7 marketing videos that drove 100+ orders.",
+        ],
+      },
+    ],
+    reflection:
+      "Zwende marked the first major breakthrough in my professional journey. It taught me invaluable lessons in discipline and how to navigate and deliver on things outside my comfort zone. It's where I first learned the art of overcommitting and successfully delivering results.",
     quote: { text: "What doesn't kill you, makes you stronger.", author: "Nietzsche" },
   },
   {
     company: "Vinayak Buildtech",
     companyUrl: null,
-    role: "Intern — Construction Management",
-    period: "May 2018 — Aug 2018",
-    location: "Udaipur, IN",
-    note: "Real-estate developer in Udaipur. This gave me time to rule out two paths I didn't want — field jobs in Civil Engineering and Actuarial Science (I cleared a couple of papers before realizing it wasn't the fit).",
+    location: "Udaipur, India",
+    roles: [
+      {
+        title: "Intern — Construction Management",
+        period: "May 2018 — Aug 2018",
+        highlights: [
+          "Interned as part of BITS Pilani's compulsory Practice School (PS-1) program.",
+          "Built a Gantt-chart application; prepared material tests and QA reports.",
+          "Researched & simulated solar power generation for the project.",
+        ],
+      },
+    ],
+    reflection:
+      "This opportunity gave me the time to rule out two paths I didn't want to pursue. I decided against field jobs in Civil Engineering and briefly explored Actuarial Science — even clearing a couple of papers — before realizing it wasn't the right fit for me.",
     quote: { text: "In the quiet of solitude, we find clarity.", author: null },
   },
   {
     company: "Mapped",
     companyUrl: null,
-    role: "Co-founder",
-    period: "Dec 2016 — Aug 2018",
     location: "Remote",
-    note: "An advertising & marketing startup with its own production arm — born from a casual evening of brainstorming with friends. We were onto trends that would shape content for years; competing priorities meant it never reached full potential.",
+    roles: [
+      {
+        title: "Co-founder",
+        period: "Dec 2016 — Aug 2018",
+        highlights: [
+          "Worked with 4 clients on their creative needs.",
+          "Generated close to ₹1 Lakh in revenue.",
+          "Created educational videos on varied topics (GST, Terrorism Financing, and more).",
+        ],
+      },
+    ],
+    reflection:
+      "A startup born from a casual evening of brainstorming with friends. It could have been something big — we were onto ideas and trends that would shape the next few years of content. Personal priorities, college commitments and a communication breakdown meant it never reached its full potential.",
     quote: {
       text: "If you're not excited about the thing you're building, then no one else will be either.",
       author: "Ben Horowitz, The Hard Thing About Hard Things",
@@ -135,27 +207,50 @@ export const experiences: Experience[] = [
 export const skills: SkillGroup[] = [
   {
     category: "Product Management & Strategy",
-    items: ["Roadmap Planning", "Agile/Scrum (JIRA, DevRev)", "GTM Strategy", "Pricing", "Monetization", "User Research", "Project Management"],
+    items: ["Roadmap Planning", "Agile/Scrum", "GTM Strategy", "Pricing", "Monetization", "User Research"],
+    tools: [{ group: "Project Management", items: ["Jira (Agile/Scrum)", "Notion", "Trello", "DevRev"] }],
   },
   {
     category: "Technical",
-    items: ["Python", "REST APIs", "Postman", "Documentation", "Front-end Development", "Scripting"],
+    items: ["Python", "REST APIs", "Postman", "Documentation"],
+    tools: [
+      { group: "Front-end", items: ["HTML", "CSS"] },
+      { group: "Scripting", items: ["Python 3"] },
+      { group: "Tools", items: ["Postman", "Segment"] },
+    ],
   },
   {
     category: "Data & Analytics",
-    items: ["SQL", "Google Analytics", "Mixpanel", "Amplitude", "Looker", "A/B Testing", "Dashboarding"],
+    items: ["SQL", "Google Analytics", "Mixpanel", "Amplitude", "Looker", "A/B Testing"],
+    tools: [
+      { group: "Analysis & Dashboarding", items: ["Looker Studio", "Amplitude", "Mixpanel", "Metabase", "Clarisights"] },
+      { group: "Business & Lead Intelligence", items: ["Clearbit", "MixRank", "Apptopia", "Lusha", "Slintel / 6sense"] },
+    ],
   },
   {
     category: "Growth, Marketing & Ops",
-    items: ["Event Marketing", "Webinars", "CRO", "Marketing Ops (HubSpot)", "Content", "CRM", "SEM & Paid Ads", "Email Marketing"],
+    items: ["Event Marketing", "Webinars", "CRO", "Marketing Ops (HubSpot)", "Content"],
+    tools: [
+      { group: "CRM", items: ["Zoho", "HubSpot"] },
+      { group: "SEM & Paid Ads", items: ["Facebook Ads", "LinkedIn Ad Manager"] },
+      { group: "Email Marketing", items: ["Customer IO", "Twilio SendGrid", "Klaviyo", "HubSpot"] },
+    ],
   },
   {
     category: "UX & Customer Research",
-    items: ["Wireframing (Figma, Balsamiq)", "Customer Journey Mapping", "Usability Testing", "Website Building"],
+    items: ["Wireframing (Figma, Balsamiq)", "Customer Journey Mapping", "Usability Testing"],
+    tools: [
+      { group: "Design & Wireframing", items: ["Figma", "Balsamiq", "Miro", "InVision", "Whimsical", "Eraser.io"] },
+      { group: "CRO & Website Analytics", items: ["Unbounce", "Hotjar", "FullStory"] },
+    ],
   },
   {
     category: "Content & Creative",
     items: ["Video Editing", "Photography", "Cinematography"],
+    tools: [
+      { group: "Video Editing", items: ["Final Cut Pro", "iMovie"] },
+      { group: "Suites", items: ["Adobe Suite", "Google Workspace", "Microsoft Office"] },
+    ],
   },
 ];
 
@@ -169,7 +264,8 @@ export const projects: Project[] = [
   {
     name: "Project Digital Pilani",
     period: "Feb 2017",
-    description: "Converted Rayla village into a cashless economy — door-to-door surveys and bilingual documentation to drive digital-payments adoption.",
+    description:
+      "Converted Rayla village into a cashless economy — door-to-door surveys and bilingual documentation to drive digital-payments adoption.",
     href: "https://www.youtube.com/watch?v=LoQyMiSIfIA",
   },
 ];
@@ -201,18 +297,30 @@ export const education: Education[] = [
   {
     school: "Birla Institute of Technology & Science, Pilani",
     period: "2016 — 2021",
+    location: "Pilani, India",
     detail: "B.E. Civil Engineering · M.Sc. Physics (Honours)",
+    highlights: ["CGPA: 6.82 / 10"],
     projects: bitsProjects,
   },
   {
     school: "Institute of Actuaries of India",
     period: "2018 — 2020",
-    detail: "Actuarial Science (cleared a couple of papers)",
+    location: "India",
+    detail: "Actuarial Science",
+    highlights: ["Cleared ACET (Jun 2018) — 78%", "Student member; since dropped out"],
   },
   {
     school: "St. Anne's Senior Secondary School, Jodhpur",
     period: "2005 — 2015",
+    location: "Jodhpur, India",
     detail: "Class XII (CBSE): 90% · Class X (CBSE): 10/10 CGPA",
+    highlights: [
+      "Cultural Secretary (2014–15)",
+      "CBSE Clusters Basketball Team (2013–15)",
+      "Music Club & Choir Lead (2012–15)",
+      "School Prefect",
+      "Technothlon (IIT Guwahati) — Rank 62",
+    ],
   },
 ];
 
@@ -222,9 +330,104 @@ export const academicAchievements: string[] = [
 ];
 
 export const volunteer: Volunteer[] = [
-  { org: "Dept. of External Affairs, BITS Pilani", period: "Aug 2016 — Apr 2019" },
-  { org: "Microsoft Student Partner, BITS Pilani", period: "Aug 2016 — Aug 2017" },
-  { org: "Centre for Entrepreneurial Leadership", period: "Sep 2016 — May 2017" },
+  {
+    org: "Dept. of External Affairs, BITS Pilani",
+    period: "Aug 2016 — Apr 2019",
+    role: "Joint Coordinator → Core Team",
+    highlights: [
+      "Led sponsorship generating ₹2L+ across two editions of Aarohan; cut logistics costs 47% & 14%, lifting profitability 66%.",
+      "Drove the social-media + webpage initiative, growing organic reach 74%.",
+      "Ran hospitality, accommodation and event curation for 80+ schools.",
+    ],
+  },
+  {
+    org: "Microsoft Student Partner, BITS Pilani",
+    period: "Aug 2016 — Aug 2017",
+    highlights: [
+      "Managed registration, accommodation, food and logistics for 800+ participants nationwide.",
+      "Handled hospitality & logistics for talks by Microsoft India leadership.",
+    ],
+  },
+  {
+    org: "Centre for Entrepreneurial Leadership",
+    period: "Sep 2016 — May 2017",
+    highlights: [
+      "Publicity & Marketing Associate — Conquest 2017.",
+      "Inauguration Head — Wadhwani Entrepreneurship Week 2017.",
+      "Core Team Member — Startup Weekend 2017.",
+    ],
+  },
+];
+
+export const showcase: ShowcaseGroup[] = [
+  {
+    category: "Products",
+    icon: "🏗️",
+    items: [
+      { label: "AI Agent Hackathon Deck (Dec 2024)" },
+      { label: "100ms Interview Assignment (Mar 2022)" },
+      { label: "Flipkart APM Programme Deck — Nike Run Club (Oct 2020)" },
+    ],
+  },
+  {
+    category: "Writings & Articles",
+    icon: "✍🏼",
+    items: [
+      { label: "Superset: a seamless transition to 100ms (writer)", href: "https://www.100ms.live/blog/superset-seamless-transition-to-100ms" },
+      { label: "FixHealth: leveraging AI with 100ms (writer)", href: "https://www.100ms.live/blog/fixhealth-leveraging-ai-with-100ms" },
+      { label: "Transcripts & AI summaries — launch (writer)", href: "https://www.100ms.live/blog/transcript-summary-launch" },
+      { label: "Measuring WebRTC call quality, Pt. 1 (editor)", href: "https://www.100ms.live/blog/measuring-webrtc-call-quality-part-1" },
+      { label: "Optimizing call quality — lessons from dogfooding (editor)", href: "https://www.100ms.live/blog/optimizing-call-quality-lessons-from-dogfooding" },
+      { label: "Twilio vs 100ms — call-quality comparison (editor)", href: "https://www.100ms.live/blog/twilio-vs-100ms-call-quality-comparison" },
+    ],
+  },
+  {
+    category: "Certifications",
+    icon: "🎫",
+    items: [
+      { label: "Coursera certificate 1", href: "https://coursera.org/share/81d2c985c1b9874d09b50f43c2a60197" },
+      { label: "Coursera certificate 2", href: "https://coursera.org/share/cf791ad76069361ae579223b43ba2aad" },
+      { label: "Coursera certificate 3", href: "https://coursera.org/share/b4542f1f08dfe96a1c5594371133628e" },
+      { label: "Coursera certificate 4", href: "https://coursera.org/share/9fc4a3af408c4cb9665356edf163dbe5" },
+      { label: "Coursera certificate 5", href: "https://coursera.org/share/21351511178d03aec6653cdcae28153e" },
+      { label: "Coursera certificate 6", href: "https://coursera.org/share/68a9d3972b14ec90ab28b0454632c5af" },
+    ],
+  },
+  {
+    category: "Photography & Cinematography",
+    icon: "📸",
+    items: [
+      { label: "Instagram — @mntr_space", href: "https://www.instagram.com/mntr_space/" },
+      { label: "YouTube — @mntr_space", href: "https://www.youtube.com/@mntr_space" },
+    ],
+  },
+  {
+    category: "Videos",
+    icon: "📹",
+    items: [
+      { label: "Aarohan 2019 — After Movie (BITS Pilani)", href: "https://www.youtube.com/watch?v=5lasVV_JO7o" },
+      { label: "The Walk — Brahmatal Trek", href: "https://www.youtube.com/watch?v=pQmoPVx8tx0" },
+      { label: "Brahmatal Trek — iPhone Vlog", href: "https://www.youtube.com/watch?v=rTZeYz5i134" },
+      { label: "Dept. of External Affairs — 2018 Orientation", href: "https://www.youtube.com/watch?v=WZKzi7FWlNI" },
+      { label: "Dept. of External Affairs — BITS Pilani", href: "https://www.youtube.com/watch?v=3BhXjoc_EV0" },
+      { label: "Nirvi — Bikaner Vlog (iPhone SE / Nikon D5000)", href: "https://www.youtube.com/watch?v=dys1E95Skmw" },
+    ],
+  },
+  {
+    category: "Music",
+    icon: "🎶",
+    items: [
+      { label: "Maru Nite 2018 — Guitar Performance (BITS Pilani)", href: "https://www.youtube.com/watch?v=t-H3S7-WyVI" },
+    ],
+  },
+  {
+    category: "Experiences",
+    icon: "🪂",
+    items: [
+      { label: "Skydiving in Dubai", href: "https://www.youtube.com/watch?v=gIpINCIoXoE" },
+      { label: "Driving a Formula 3 car", href: "https://www.youtube.com/watch?v=Us8Vr5nIJvg" },
+    ],
+  },
 ];
 
 export const interesting: ExternalLink[] = [

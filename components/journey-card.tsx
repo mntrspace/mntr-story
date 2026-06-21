@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Meta } from "@/components/meta";
+import { FiCalendar, FiMapPin } from "react-icons/fi";
 import type { Milestone } from "@/lib/journey";
 
 const KIND_LABEL: Record<Milestone["kind"], string> = {
@@ -20,7 +22,9 @@ export function JourneyCard({ m }: { m: Milestone }) {
         <span className="mono text-[0.7rem] uppercase tracking-widest text-accent">
           {KIND_LABEL[m.kind]}
         </span>
-        <span className="mono ml-auto text-xs text-muted">{m.period}</span>
+        <span className="ml-auto">
+          <Meta icon={FiCalendar}>{m.period}</Meta>
+        </span>
       </div>
 
       <div className="mt-5 h-9">
@@ -44,7 +48,9 @@ export function JourneyCard({ m }: { m: Milestone }) {
       <h3 className="mt-4 text-lg font-bold tracking-tight">{m.org}</h3>
       {m.blurb ? <p className="mt-1 text-sm text-muted">{m.blurb}</p> : null}
       {m.location ? (
-        <p className="mono mt-1 text-xs text-muted">{m.location}</p>
+        <div className="mt-1">
+          <Meta icon={FiMapPin}>{m.location}</Meta>
+        </div>
       ) : null}
 
       {m.roles ? (

@@ -82,7 +82,7 @@ export const journey: Milestone[] = [
     period: "Dec 2016 — Aug 2018",
     location: "Remote",
     roles: [{ title: "Co-founder", period: "Dec 2016 — Aug 2018" }],
-    note: "An advertising & marketing startup with its own production arm — born from a casual evening of brainstorming with friends. We were onto trends that would shape content for years; competing priorities meant it never reached full potential.",
+    note: "A startup born from a casual evening of brainstorming with friends. It could have been something big — we were onto ideas and trends that would shape the next few years of content. Personal priorities, college commitments and a communication breakdown meant it never reached its full potential.",
   },
   {
     id: "vinayak",
@@ -96,7 +96,7 @@ export const journey: Milestone[] = [
     period: "May — Aug 2018",
     location: "Udaipur, India",
     roles: [{ title: "Intern — Construction Management", period: "May — Aug 2018" }],
-    note: "This gave me the time to rule out two paths I didn't want — field jobs in Civil Engineering and Actuarial Science (I cleared a couple of papers before realizing it wasn't the fit).",
+    note: "This opportunity gave me the time to rule out two paths I didn't want to pursue. I decided against field jobs in Civil Engineering and briefly explored Actuarial Science — even clearing a couple of papers — before realizing it wasn't the right fit for me.",
   },
   {
     id: "zwende",
@@ -114,7 +114,7 @@ export const journey: Milestone[] = [
       { title: "Product & Growth Analyst", period: "May 2020 — Apr 2022" },
     ],
     achievements: [{ title: "Instagram growth", metric: "25K → 184K", date: "2021" }],
-    note: "My first real breakthrough — discipline, delivering outside my comfort zone, and the art of overcommitting then delivering. Later drove growth and shipped 0-to-1 features through the COVID pivot.",
+    note: "Zwende marked the first major breakthrough in my professional journey. It taught me invaluable lessons in discipline and how to navigate and deliver on things outside my comfort zone. It's where I first learned the art of overcommitting and successfully delivering results.",
   },
   {
     id: "100ms",
@@ -135,6 +135,6 @@ export const journey: Milestone[] = [
       { title: "US Telehealth product strategy", metric: "$1.5M live", date: "2023" },
       { title: "AI voice agents for healthcare", metric: "4 pilots", date: "2024" },
     ],
-    note: "Surrounded by incredibly smart people and endless room to grow. It taught me to love what you do, take ownership, and persevere — plus a truly global experience across customers, events, and countries.",
+    note: "At 100ms I was surrounded by incredibly smart people, which gave me endless opportunities to grow and explore the business. It taught me to love what you do, take accountability and ownership, and persevere — plus a truly global experience: meeting fascinating people, engaging with customers, attending events, and living in different countries.",
   },
 ];

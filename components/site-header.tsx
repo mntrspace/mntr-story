@@ -11,6 +11,7 @@ const navLinks = [
   { href: "#experience", label: "Experience", route: false },
   { href: "#skills", label: "Skills", route: false },
   { href: "#projects", label: "Projects", route: false },
+  { href: "#showcase", label: "Showcase", route: false },
   { href: "#education", label: "Education", route: false },
   { href: "/journey", label: "Journey", route: true },
   { href: "/interesting", label: "Interesting", route: true },
@@ -51,13 +52,13 @@ export function SiteHeader() {
           </span>
         </a>
 
-        <nav className="hidden flex-1 items-center justify-center gap-5 lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-4 lg:flex">
           {navLinks.map((l) =>
             l.route ? (
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="whitespace-nowrap text-sm text-muted transition-colors hover:text-foreground"
               >
                 {l.label}
               </Link>
@@ -65,7 +66,7 @@ export function SiteHeader() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="whitespace-nowrap text-sm text-muted transition-colors hover:text-foreground"
               >
                 {l.label}
               </a>
