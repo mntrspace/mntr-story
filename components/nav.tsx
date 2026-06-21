@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const links = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -24,6 +26,14 @@ export function Nav() {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href="/journey"
+              className="text-sm font-medium text-accent transition-opacity hover:opacity-80"
+            >
+              Journey →
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

@@ -238,3 +238,15 @@ export const interesting: ExternalLink[] = [
 
 export const horizonQuote =
   "To that sublime reach I seek to fly, where the horizon meets the sky";
+
+export const pronunciation = {
+  audio: "/mantra-pronunciation.m4a",
+  ipa: "/ˈmʌn.trə ˈmʌ.nʌn ˈsɑː.rʌs.wʌt/",
+  intro:
+    "My name can be a bit tricky to pronounce, so you can call me “Mantr.” Here's an AI-generated recording of the correct pronunciation.",
+  breakdown: [
+    { part: "Mantra", say: "Muhn-truh", ipa: "/ˈmʌn.trə/" },
+    { part: "Manan", say: "Muhn-un", ipa: "/ˈmʌ.nʌn/" },
+    { part: "Saraswat", say: "Sah-ruhs-wut", ipa: "/ˈsɑː.rʌs.wʌt/" },
+  ],
+};

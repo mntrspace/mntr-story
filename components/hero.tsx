@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { profile, socials } from "@/lib/content";
 import { SocialLinks } from "@/components/social-links";
+import { Pronounce } from "@/components/pronounce";
 
 export function Hero() {
   return (
@@ -22,6 +24,15 @@ export function Hero() {
           <p className="mt-3 max-w-xl text-lg text-muted">{profile.tagline}</p>
           <div className="mt-5">
             <SocialLinks socials={socials} />
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <Link
+              href="/journey"
+              className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            >
+              See my journey →
+            </Link>
+            <Pronounce variant="compact" />
           </div>
         </div>
       </div>
