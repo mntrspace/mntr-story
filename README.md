@@ -54,9 +54,9 @@ so you can redesign freely without touching content.
 
 ## Deploy
 
-Push to `main`, import the repo on [Vercel](https://vercel.com/new), and it
-auto-deploys on every push. Update `metadataBase` in `app/layout.tsx` to the
-final domain (e.g. `https://mntr.space`) so OG/social tags resolve correctly.
+**Live:** https://mntr-storyspace.vercel.app — Vercel project `mntr-storyspace`,
+GitHub push-to-deploy connected, so every push to `main` auto-deploys. Update
+`metadataBase` in `app/layout.tsx` if the domain changes (e.g. a custom `mntr.space`).
 
 ## Publishing safety
 

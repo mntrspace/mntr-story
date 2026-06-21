@@ -20,7 +20,7 @@ export type SkillGroup = { category: string; items: string[] };
 export type Project = { name: string; period: string; description: string; href: string | null };
 export type Education = { school: string; period: string; detail: string };
 export type Volunteer = { org: string; period: string };
-export type ExternalLink = { label: string; description: string; href: string };
+export type ExternalLink = { label: string; description: string; href: string; external?: boolean };
 
 export const profile = {
   name: "Mantra Manan Saraswat",
@@ -225,13 +225,14 @@ export const volunteer: Volunteer[] = [
 export const interesting: ExternalLink[] = [
   {
     label: "Quote Off",
-    description: "A running collection of quotes I love.",
-    href: "https://mntr-space.notion.site/Quote-Off-1a4467023265809bb765fa4e23b721fe",
+    description: "Words I keep coming back to.",
+    href: "/quote-off",
   },
   {
-    label: "Shelf-Worthy — Book List",
-    description: "Books worth your shelf.",
-    href: "https://mntr-space.notion.site/Shelf-Worthy-Book-List-1a446702326580f68431d0f87234cebf",
+    label: "Shelf-Worthy",
+    description: "What I'm reading — on Goodreads.",
+    href: "https://www.goodreads.com/user/show/138904370-mantra-manan-saraswat",
+    external: true,
   },
 ];
 
